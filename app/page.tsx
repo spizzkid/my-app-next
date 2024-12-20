@@ -1,7 +1,9 @@
+'use client';
 import FeatureCard from './components/FeatureCard';
 import ArticleCard from './components/ArticleCard';
 import Avatar from './components/Avatar';
 import Footer from './components/Footer';
+import Link from 'next/link';
 
 export default function Home() {
   const features = [
@@ -35,7 +37,6 @@ export default function Home() {
     }
   ];
 
-  // 添加推荐文章数据
   const recommendedArticles = [
     {
       title: "中医推拿按摩：改善颈椎问题的自然疗法",
@@ -51,7 +52,7 @@ export default function Home() {
       summary: "秋季养生重在补充营养，本文推荐三款适合秋季饮用的养生汤品...",
       url: "https://example.com/article2",
       category: "健康食疗",
-      imageUrl: "/images/soup.jpg"
+      imageUrl: "/images/养生汤.jpg"
     },
     {
       title: "5分钟冥想练习：快速缓解工作压力",
@@ -64,7 +65,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <main className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-8 flex-grow">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">AI决定 - 智能健康决策</h1>
@@ -85,9 +86,13 @@ export default function Home() {
         <section className="mt-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-semibold">为您推荐</h2>
-            <button className="text-blue-600 hover:text-blue-800">
-              查看更多 →
-            </button>
+            <Link 
+              href="/articles" 
+              className="text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors"
+            >
+              查看更多
+              <span className="text-lg">→</span>
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recommendedArticles.map((article, index) => (
@@ -98,9 +103,11 @@ export default function Home() {
             ))}
           </div>
         </section>
+        
       </div>
+
       <Footer />
-    </div>
+    </main>
   );
 }
 
